@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    background-color: #282c34;
+    color: azure;
+    font-size: 20px;
+}
+
+.counter, .list-one {
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
+    color: white;
+}
+
+button, input{
+    padding: 10px;
+    margin: 10px;
+    min-width: 100px;
+}
+
+
