@@ -2,8 +2,6 @@ import {ADD_TASK, LOADING_END, LOADING_ERROR, LOADING_START, REMOVE_TASK, UPDATE
 import initialStore from "../../redux/initialStore";
 
 
-
-
 export default function toDoAsyncReducer(todos = initialStore.todos, {type, error, payload}){
   switch (type) {
     case LOADING_START:

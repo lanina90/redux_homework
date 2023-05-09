@@ -12,8 +12,12 @@ const initialStore = {
   todos: {
     loading: false,
     tasks: []
-  }
+  },
 
+  toDo: {
+    loading: false,
+    toDo: []
+  }
 
 }
 

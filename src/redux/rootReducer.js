@@ -10,6 +10,7 @@ export default combineReducers({
   listArr: listReducer,
   inputValue: inputValueReducer,
   list: todoReducer,
-  tasks: toDoAsyncReducer
+  tasks: toDoAsyncReducer,
+  toDo: toDoAsyncReducer
 
 })
