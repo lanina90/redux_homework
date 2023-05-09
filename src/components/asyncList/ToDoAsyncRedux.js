@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
-import {addTask, LoadedAction, removeTasks} from "./asyncAction";
-import { v4 as uuidv4 } from "uuid";
+import {addTask, LoadedAction, removeTasks, updateTask} from "./asyncAction";
+import {v4 as uuidv4} from "uuid";
+import Loader from "../loader/Loader";
 
 class ToDoAsyncRedux extends Component {
   state = {
     text: '',
-    selectedIds: []
+    selectedIds: [],
+    editing: null
   }
 
   componentDidMount() {
@@ -36,32 +38,63 @@ class ToDoAsyncRedux extends Component {
     this.setState({text: ''})
   }
 
+  taskEditHandler(id, title){
+    const updatedTask = {id, title}
+    this.props.dispatch(updateTask(updatedTask));
+    this.setState({editing: null})
+  }
+
   render() {
-    const {tasks} = this.props.todos
+    const {tasks, loading} = this.props.todos
     const {dispatch} = this.props
 
     const listElement = tasks.map((el, index) => {
-      return <p key={el.id}>{index} - {el.title}
-        <input
-          type='checkbox'
-          id={el.id}
-          onChange={(e) => this.idTaskHandler(e)}
-        /></p>
+      return (
+        <div className='tasks__item' key={el.id}>
+          <input
+            type='checkbox'
+            id={el.id}
+            onChange={(e) => this.idTaskHandler(e)}
+          />
+          <p>{index + 1}</p>
+          <div className='tasks__item-text'>
+            {this.state.editing === el.id ? (
+              <input
+                type="text"
+                defaultValue={el.title}
+                onBlur={(e) => this.taskEditHandler(el.id, e.target.value)}
+              />
+            ) : (
+              <p>{el.title}</p>
+            )}
+
+          </div>
+          <div className='tasks__btns'>
+            <button
+            onClick={() => dispatch(removeTasks([el.id]))}
+            >Remove</button>
+            <button
+              onClick={() => {
+                this.setState({ editing: el.id });
+              }}
+            >Edit</button>
+          </div>
+
+        </div>
+      );
     })
 
     return (
       <div>
-
-        <div className='list-one'>
+        <div className='tasks'>
           <h2>TO_DO list with Redux ( Async ) </h2>
-          {listElement}
-          <div>
+          {loading ? <Loader/> : <div>{listElement}</div>}
             <input
               type="text"
+              placeholder='Type your task here...'
               onChange={(e) => this.addTextToStore(e)}
               value={this.state.text}
             />
-          </div>
           <button
             onClick={() => {
               if (this.state.text.trim()) {
@@ -81,6 +114,7 @@ class ToDoAsyncRedux extends Component {
             }}> REMOVE TASK
           </button>
         </div>
+
       </div>
     );
   }

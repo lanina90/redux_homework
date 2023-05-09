@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import CounterRedux from "./components/counter/CounterRedux";
 import {resetActionCreator} from "./components/counter/counterAction";
 

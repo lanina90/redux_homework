@@ -8,12 +8,14 @@ export const LOADING_ERROR = 'LOADING_ERROR'
 export const ADD_TASK = 'ADD_TASK';
 export const REMOVE_TASK = 'REMOVE_TASK';
 
+export const UPDATE_TASK = 'UPDATE_TASK';
+
 export function LoadedAction() {
 
   return (dispatch)  => {
     dispatch({type: LOADING_START})
 
-    axios('https://jsonplaceholder.typicode.com/todos')
+    axios('https://jsonplaceholder.typicode.com/users/1/todos')
       .then(res => {
         const tasksWithIdAsString = res.data.map(task => ({ ...task, id: String(task.id) }));
         dispatch({
@@ -38,5 +40,12 @@ export function removeTasks(ids) {
   return {
     type: REMOVE_TASK,
     payload: ids
+  }
+}
+
+export function updateTask(task) {
+  return {
+    type: UPDATE_TASK,
+    payload: task
   }
 }

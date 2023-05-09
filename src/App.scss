@@ -1,0 +1,54 @@
+body {
+  text-align: center;
+  background-color: #282c34;
+  color: azure;
+  font-size: 20px;
+}
+
+.counter, .list-one {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: auto;
+  color: white;
+}
+
+button, input {
+  padding: 10px;
+  margin: 10px;
+  min-width: 100px;
+}
+
+.tasks {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: auto;
+  color: white;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+
+    &.input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      transform: scale(1.5);
+      margin-right: 10px;
+    }
+    &-text{
+      width: 300px;
+      margin-left: 15px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
