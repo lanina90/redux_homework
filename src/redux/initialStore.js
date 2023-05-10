@@ -14,11 +14,6 @@ const initialStore = {
     tasks: []
   },
 
-  toDo: {
-    loading: false,
-    toDo: []
-  }
-
 }
 
 export default initialStore

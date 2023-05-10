@@ -5,12 +5,13 @@ import inputValueReducer from "../components/list/inputReducer";
 import todoReducer from "../components/todolist/todoReducer";
 import toDoAsyncReducer from "../components/asyncList/toDoAsyncReducer";
 
+
 export default combineReducers({
   count: counterReducer,
   listArr: listReducer,
   inputValue: inputValueReducer,
   list: todoReducer,
   tasks: toDoAsyncReducer,
-  toDo: toDoAsyncReducer
+
 
 })

@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import ListRedux from "./components/list/ListRedux";
 import ToDoRedux from "./components/todolist/ToDoRedux";
 import ToDoAsyncRedux from "./components/asyncList/ToDoAsyncRedux";
-import NewToDoAsync from "./components/NewTODO/NewToDoAsync";
+
 
 class App extends Component {
   render() {
@@ -24,8 +24,6 @@ class App extends Component {
         <ToDoRedux/>
 
         <ToDoAsyncRedux/>
-
-        <NewToDoAsync/>
 
       </div>
     );
