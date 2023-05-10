@@ -1,4 +1,5 @@
 import axios from "axios";
+import {toDoApi} from "../../API/api";
 
 
 export const LOADING_START = 'LOADING_START'
@@ -13,10 +14,9 @@ export const UPDATE_TASK = 'UPDATE_TASK';
 export function LoadedAction() {
 
   return (dispatch) => {
-
     dispatch({type: LOADING_START})
 
-    axios('https://jsonplaceholder.typicode.com/users/1/todos')
+    toDoApi.getToDoItems()
       .then(res => {
         const tasksWithIdAsString = res.data.map(task => ({...task, id: String(task.id)}));
         dispatch({
